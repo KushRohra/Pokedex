@@ -8,19 +8,19 @@ async function getapi(url) {
 }
 
 async function show(data) {
-	let tab=`<tr>
-				<th>Pokemon ID</th>
-				<th>Name</th>
-				<th>Image</th>
-				<th>Height</th>
-				<th>Base Experience</th>
-				<th>See in Detail<th>
-			</tr>`;
+	let tab=`<thead class="thead-dark">
+				<th scope="col">Pokemon ID</th>
+				<th scope="col">Name</th>
+				<th scope="col">Image</th>
+				<th scope="col">Height</th>
+				<th scope="col">Base Experience</th>
+				<th scope="col">See in Detail<th>
+			</thead>`;
 	for(let r of data.results) {
 		let dataForOne = await getDataforCurrentSet(r.url);
 		tab += dataForOne;
 	}
-	document.getElementById("para").innerHTML = tab;
+	document.getElementById("table").innerHTML = tab;
 }
 
 async function getDataforCurrentSet(url) {
@@ -28,12 +28,12 @@ async function getDataforCurrentSet(url) {
 	var data = await response.json();
 	//console.log(data);
 	return `<tr>
-				<td>${data.id}</td>
-				<td>${data.name}</td>
-				<td><img src="${data.sprites.front_default}"></td>
+				<th scope="row">${data.id}</th>
+				<td>${data.name[0].toUpperCase()+data.name.slice(1)}</td>
+				<td><img src="${data.sprites.front_default}" alt="${data.name}" class="img-thumbnail"></td>
 				<td>${data.height}</td>
 				<td>${data.base_experience}</td>
-				<td><a href="../seePokemon/seePokemon.html?id=${data.id}"><button>See in Detail</button></a></td>
+				<td><a href="../seePokemon/seePokemon.html?id=${data.id}" class="badge badge-primary"><button class="btn btn-primary">See in Detail</button></a></td>
 			</tr>`
 } 
 
