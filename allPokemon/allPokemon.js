@@ -33,7 +33,7 @@ async function getDataforCurrentSet(url) {
 				<td><img src="${data.sprites.front_default}"></td>
 				<td>${data.height}</td>
 				<td>${data.base_experience}</td>
-				<td><a href="seePokemon.html?id=${data.id}"><button>See in Detail</button></a></td>
+				<td><a href="../seePokemon/seePokemon.html?id=${data.id}"><button>See in Detail</button></a></td>
 			</tr>`
 } 
 
