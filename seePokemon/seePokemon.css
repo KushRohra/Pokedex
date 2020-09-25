@@ -1,0 +1,26 @@
+#button {
+	margin-left: 40%;
+}
+#pokemon {
+	margin-left: 5%;
+}
+.type {
+	display: inline-block;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+    background: cyan;
+    color: #fff;
+}
+#moves {
+	width: 90%;
+}
+#moves li {
+	padding: 8px; 
+}
+#ability {
+	width: 90%;
+}
+#ability li {
+	padding: 8px; 
+}
