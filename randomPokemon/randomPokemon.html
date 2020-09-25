@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		#button {
+			margin-left: 40%;
+		}
+		#pokemon {
+			margin-left: 5%;
+		}
+		.type {
+			display: inline-block;
+		    padding: 5px 10px;
+		    margin: 10px 10px 10px 0;
+		    border-radius: 5px;
+		    background: cyan;
+		    color: #fff;
+		}
+		#moves {
+			width: 90%;
+		}
+		#moves li {
+			padding: 8px; 
+		}
+		#ability {
+			width: 90%;
+		}
+		#ability li {
+			padding: 8px; 
+		}
+	</style>
+	<title>Pokedex</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="randomPokemon.js"></script>
+</head>
+<body>
+	<a href="../index.html" style="text-decoration: none;" class="badge"><h1 style="font-size: 65px" class="lead">The Ultimate PokeDex</h1></a>
+	<br><br>
+	<div id="button">
+		<button class="btn btn-md" onclick="randomPokemon()">Show me a Random Pokemon</button>
+	</div>
+	<div id="pokemon">
+
+	</div>
+</body>
+</html>
