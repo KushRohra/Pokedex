@@ -3,7 +3,6 @@ var data;
 async function getapi(url) {
 	const response = await fetch(url);
 	data = await response.json();
-	//console.log(data);
 	show(data);
 }
 
@@ -43,7 +42,7 @@ function nextPage() {
 
 function prevPage() {
 	if(data.previous!=null)
-	getapi(data.previous)
+		getapi(data.previous)
 }
 
 getapi(url);
