@@ -20,7 +20,7 @@ async function show(data) {
 				  	<tr>
 					<th scope="row">${id}</th>
 					<td>${r.name[0].toUpperCase()+r.name.slice(1)}</td>
-					<td><a href="../seeBerry/seeBerry.html?id=${id}" class="badge badge-primary"><button class="btn btn-primary">See in Detail</button></a></td>
+					<td><a href="seeBerry.html?id=${id}" class="badge badge-primary"><button class="btn btn-primary">See in Detail</button></a></td>
 					</tr>
 				  `;
 		tab += row;
