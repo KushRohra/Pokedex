@@ -3,7 +3,6 @@ const url = "https://pokeapi.co/api/v2/type/";
 async function getTypes(url) {
 	const resposne = await fetch(url);
 	const data = await resposne.json();
-	console.log(data);
 	show(data);
 }
 
@@ -31,7 +30,7 @@ async function show(data) {
 }
 
 async function Capitalize(name) {
-	return name[0] + name.slice(1);
+	return name[0].toUpperCase() + name.slice(1);
 }
 
 async function getId(url) {
