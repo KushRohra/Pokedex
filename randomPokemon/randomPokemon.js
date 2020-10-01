@@ -13,20 +13,20 @@ async function randomPokemon() {
 	await show(data);
 }
 
-function show(data) {
+async function show(data) {
 	let content = `	<h1 syle="font-size:65px"><b>${data.id}. ${data.name[0].toUpperCase()+data.name.slice(1)}</b></h1>
 					<img src="${data.sprites.front_default}" alt="${data.name[0].toUpperCase()+data.name.slice(1)}" class="img-thumbnail"><br>`
-	content += concatenateTypes(data);
+	content += await concatenateTypes(data);
 	content+=`<p>Height: ${data.height}</p>
 			  <p>Weight: ${data.weight}</p>
 			  <p>Base Experience: ${data.base_experience}</p>
 			 `;
-	content += getAbilities(data);
-	content += getMoves(data);
+	content += await getAbilities(data);
+	content += await getMoves(data);
 	document.getElementById("pokemon").innerHTML = content;
 }
 
-function concatenateTypes(data) {
+async function concatenateTypes(data) {
 	let types="";
 	for(var i=0;i<data.types.length;i++) {
 		var name = data.types[i].type.name;
@@ -36,30 +36,42 @@ function concatenateTypes(data) {
 	return types;
 }
 
-function getAbilities(data) {
+async function getAbilities(data) {
 	let abilties="";
 	abilties += `<h4 class="display-4">Abilities</h3>`
 	abilties += `<div id="ability" class="list-group">`
 	for(var i=0;i<data.abilities.length;i++) {
 		ability = data.abilities[i].ability.name;
 		ability = ability[0].toUpperCase() + ability.slice(1);
-		abilties += `<li class="list-group-item list-group-item-action">${ability}</li>`
+		abilties += `<a class="btn"><li class="list-group-item list-group-item-action">${ability}</li></a>`;
 	}
 	abilties += `</div>`
 	return abilties;
 }
 
-function getMoves(data) {
+async function getMoves(data) {
 	let moves="";
 	moves += `<h4 class="display-4">Moves</h3>`
 	moves += `<div id="moves" class="list-group">`
 	for(var i=0;i<data.moves.length;i++) {
 		move = data.moves[i].move.name;
 		move = move[0].toUpperCase() + move.slice(1);
-		moves += `<li class="list-group-item list-group-item-action">${move}</li>`
+		moves += `<a class="btn" href="../moves/aboutMove.html?id=${await getId(data.moves[i].move.url)}"><li class="list-group-item list-group-item-action">${move}</li></a>`;
 	}
 	moves += `</div>`
 	return moves;
+}
+
+async function getId(url) {
+	url = url.toString();
+	var urlLength = url.length;
+	let no="";
+	for(var i=urlLength-2;i>=0;i--) {
+		if(url[i]>='0' && url[i]<='9')
+			no+=url[i];
+		else break;
+	}
+	return no.split('').reverse().join('');
 }
 
 function getFontColor(color) {

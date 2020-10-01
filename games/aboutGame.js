@@ -46,7 +46,7 @@ async function getPokemonTypes(data) {
 								<tbody>
 									<td scope="row">${i+1}</td>
 									<td>${await capitalizeName(data.types[i].name)}</td>
-									<td><a class="badge badge-primary" href="../types/aboutTypes.html?id=${await getId(data.types[i].url)}"><button class="btn btn-primary">See about the type of Pokemon in Detail</button></a></td>
+									<td><a class="btn" href="../types/aboutTypes.html?id=${await getId(data.types[i].url)}">See about the type of Pokemon in Detail</a></td>
 								</tbody>
 							`;
 	}
@@ -70,7 +70,7 @@ async function getPokemonSpecies(data) {
 								<tbody>
 									<td scope="row">${i+1}</td>
 									<td>${await capitalizeName(data.pokemon_species[i].name)}</td>
-									<td><a class="badge badge-primary" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon_species[i].url)}"><button class="btn btn-primary">See about pokemon in Detail</button></a></td>
+									<td><a class="btn" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon_species[i].url)}">See about pokemon in Detail</a></td>
 								</tbody>
 							`;
 	}
@@ -94,7 +94,7 @@ async function getMoves(data) {
 						<tbody>
 							<td scope="row">${i+1}</td>
 							<td>${await capitalizeName(data.moves[i].name)}</td>
-							<td><a class="badge badge-primary" href="../moves/aboutMove.html?id=${await getId(data.moves[i].url)}"><button class="btn btn-primary">See about move in Detail</button></a></td>
+							<td><a class="btn" href="../moves/aboutMove.html?id=${await getId(data.moves[i].url)}">See about move in Detail</a></td>
 						</tbody>
 					 `;
 	}
