@@ -1,20 +1,8 @@
-#content {
-	margin-left: 4%;
-}
-
-#damageRelations {
-	margin-left: 10%;
-}
-
-ul {
-	width: 90%;
-}
-
 .btn {
-    padding: 0.25rem 1rem; 
+    padding: 0.5rem 2rem; 
     border: 1px #ccc solid;
     display: inline;
-    margin: 0.3rem 0 0;
+    margin: 2rem 0 0;
     border-radius: 50px;
     text-decoration: none;
     color: #333;

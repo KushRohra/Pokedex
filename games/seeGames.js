@@ -23,7 +23,7 @@ async function show(data) {
 						<tbody>
 							<th scope="row">${i+1}</th>
 							<td>${name}</td>
-							<td><a class="badge badge-primary" href="aboutGame.html?id=${i+1}"><button class="btn btn-primary">See more details about the Game</button></a></td>
+							<td><a class="btn" href="aboutGame.html?id=${i+1}">See more details about the Game</a></td>
 						</tbody>
 					`
 	}

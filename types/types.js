@@ -20,7 +20,7 @@ async function show(data) {
 							<tbody>
 								<th scope="row">${i+1}</th>
 								<td>${await Capitalize(data.results[i].name)}</td>
-								<td><a href="aboutTypes.html?id=${await getId(data.results[i].url)}" class="badge badge-primary"><button class="btn btn-primary">See in Detail</button></a></td>
+								<td><a href="aboutTypes.html?id=${await getId(data.results[i].url)}" class="btn">See in Detail</a></td>
 							</tbody>
 						`
 	}
