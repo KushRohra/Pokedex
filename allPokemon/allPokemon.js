@@ -37,7 +37,8 @@ async function getDataforCurrentSet(url) {
 } 
 
 function nextPage() {
-	getapi(data.next);
+	if(data.next!=null)
+		getapi(data.next);
 }
 
 function prevPage() {

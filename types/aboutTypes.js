@@ -20,6 +20,8 @@ async function show(data) {
 					  `;
 
 	typeContent += await getDamageRelations(data);
+	typeContent += await getPokemon(data);
+	typeContent += await getMoves(data);
 	typeContent += `</div>`;
 
 	document.getElementById("typeContent").innerHTML = typeContent;
@@ -78,6 +80,36 @@ async function getNoDamageTo(data) {
 		returnData += `<a href="aboutTypes.html?id=${await getId(data.damage_relations.no_damage_to[i].url)}" class="btn"><li class="list-group-item list-group-item-action">${await Capitalize(data.damage_relations.no_damage_to[i].name)}</li></a>`;
 	returnData += `</ul>`;
 	return returnData;
+}
+
+async function getPokemon(data) {
+	let pokemonList = `
+					   	  <div>
+					   	  	<h3><strong>Pokemon that fall under this category<strong></h5>
+					   	  	<ul class="list-group">
+					   `;
+
+	for(var i=0;i<data.pokemon.length;i++) {
+		pokemonList += `<a class="btn" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon[i].pokemon.url)}"><li class="list-group-item list-group-item-action">${await Capitalize(data.pokemon[i].pokemon.name)}</li></a>`
+	}
+
+	pokemonList += `</ul></div>`;
+	return pokemonList;
+}
+
+async function getMoves(data) {
+	let moves = `
+					   	  <div>
+					   	  	<h3><strong>Moves of different Pokemons that fall under this category<strong></h5>
+					   	  	<ul class="list-group">
+					   `;
+
+	for(var i=0;i<data.moves.length;i++) {
+		moves += `<a class="btn" href="../moves/aboutMove.html?id=${await getId(data.moves[i].url)}"><li class="list-group-item list-group-item-action">${await Capitalize(data.moves[i].name)}</li></a>`
+	}
+
+	moves += `</ul></div>`;
+	return moves;
 }
 
 async function getId(url) {
