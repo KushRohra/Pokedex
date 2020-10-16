@@ -25,3 +25,7 @@ ul {
 .btn:hover {
     background: #f4f4f4;
 }
+
+.button {
+    width: 90%;
+}

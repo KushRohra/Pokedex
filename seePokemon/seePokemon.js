@@ -50,10 +50,39 @@ async function getMoves(data) {
 	let moves="";
 	moves += `<h4 class="display-4">Moves</h3>`
 	moves += `<div id="moves" class="list-group">`
-	for(var i=0;i<data.moves.length;i++) {
+	for(var i=0;i<data.moves.length;i=i+3) {
 		move = data.moves[i].move.name;
 		move = move[0].toUpperCase() + move.slice(1);
-		moves += `<a class="btn" href="../moves/aboutMove.html?id=${await getId(data.moves[i].move.url)}"><li class="list-group-item list-group-item-action">${move}</li></a>`;
+		moves += `	<div class="row">
+						<div class="col">
+							<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i].move.url)}">
+								<li class="list-group-item list-group-item-action">${move}</li>
+							</a>
+						</div>
+				`;
+		if(i+1<data.moves.length) {
+			move = data.moves[i+1].move.name;
+			move = move[0].toUpperCase() + move.slice(1);
+			moves += `	
+							<div class="col">
+								<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+1].move.url)}">
+									<li class="list-group-item list-group-item-action">${move}</li>
+								</a>
+							</div>
+					`;
+		}
+		if(i+2<data.moves.length) {
+			move = data.moves[i+1].move.name;
+			move = move[0].toUpperCase() + move.slice(1);
+			moves += `	
+							<div class="col">
+								<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+2].move.url)}">
+									<li class="list-group-item list-group-item-action">${move}</li>
+								</a>
+							</div>
+					`;
+			moves += `</div>`
+		}
 	}
 	moves += `</div>`
 	return moves;

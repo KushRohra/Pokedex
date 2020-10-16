@@ -89,8 +89,34 @@ async function getPokemon(data) {
 					   	  	<ul class="list-group">
 					   `;
 
-	for(var i=0;i<data.pokemon.length;i++) {
-		pokemonList += `<a class="btn" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon[i].pokemon.url)}"><li class="list-group-item list-group-item-action">${await Capitalize(data.pokemon[i].pokemon.name)}</li></a>`
+	for(var i=0;i<data.pokemon.length;i=i+3) {
+		pokemonList += `	
+							<div class="row">
+								<div class="col">
+									<a class="btn button" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon[i].pokemon.url)}">
+										<li class="list-group-item list-group-item-action">${await Capitalize(data.pokemon[i].pokemon.name)}</li>
+									</a>
+								</div>
+						`;
+		if(i+1<data.pokemon.length) {
+			pokemonList += `	
+							<div class="col">
+								<a class="btn button" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon[i+1].pokemon.url)}">
+									<li class="list-group-item list-group-item-action">${await Capitalize(data.pokemon[i+1].pokemon.name)}</li>
+								</a>
+							</div>
+						`;
+		}
+		if(i+2<data.pokemon.length) {
+			pokemonList += `	
+							<div class="col">
+								<a class="btn button" href="../seePokemon/seePokemon.html?id=${await getId(data.pokemon[i+2].pokemon.url)}">
+									<li class="list-group-item list-group-item-action">${await Capitalize(data.pokemon[i+2].pokemon.name)}</li>
+								</a>
+							</div>
+						`;
+		}
+		pokemonList += `</div>`
 	}
 
 	pokemonList += `</ul></div>`;
@@ -104,8 +130,34 @@ async function getMoves(data) {
 					   	  	<ul class="list-group">
 					   `;
 
-	for(var i=0;i<data.moves.length;i++) {
-		moves += `<a class="btn" href="../moves/aboutMove.html?id=${await getId(data.moves[i].url)}"><li class="list-group-item list-group-item-action">${await Capitalize(data.moves[i].name)}</li></a>`
+	for(var i=0;i<data.moves.length;i=i+3) {
+		moves += `
+					<div class="row">
+						<div class="col">
+							<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i].url)}">
+								<li class="list-group-item list-group-item-action">${await Capitalize(data.moves[i].name)}</li>
+							</a>
+						</div>
+				`;
+		if(i+1<data.moves.length) {
+			moves += `
+						<div class="col">
+							<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+1].url)}">
+								<li class="list-group-item list-group-item-action">${await Capitalize(data.moves[i+1].name)}</li>
+							</a>
+						</div>
+					 `
+		}
+		if(i+2<data.moves.length) {
+			moves += `
+						<div class="col">
+							<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+2].url)}">
+								<li class="list-group-item list-group-item-action">${await Capitalize(data.moves[i+2].name)}</li>
+							</a>
+						</div>
+					 `
+		}
+		moves += `</div>`
 	}
 
 	moves += `</ul></div>`;
