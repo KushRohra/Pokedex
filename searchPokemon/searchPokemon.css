@@ -1,0 +1,28 @@
+.btn {
+    padding: 0.5rem 2rem; 
+    border: 1px #ccc solid;
+    display: inline;
+    margin: 2rem 0 0;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    background: black;
+    transition: background 300ms ease;
+}
+
+.btn:hover {
+    background: #f4f4f4;
+    color: black;
+}
+
+/* Gradient color1 - color2 - color1 */
+
+.design {
+	border: 0;
+	height: 1px;
+	background: #333;
+	background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
