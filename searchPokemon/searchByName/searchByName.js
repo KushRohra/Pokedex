@@ -17,7 +17,7 @@ async function getAllPokemon() {
 }
 
 async function searchPokemon() {
-	var pokemonName = document.getElementById("name").value;
+	var pokemonName = document.getElementById("name").value.toLowerCase();
 	var c = 0;
 	var pokemonResult = document.getElementById("pokemonResult");
 	var content = `<ul class="list-group">`;
