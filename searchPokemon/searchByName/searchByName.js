@@ -1,7 +1,7 @@
+document.getElementById("form").addEventListener("keyup", searchPokemon);
+
 let url = "https://pokeapi.co/api/v2/pokemon/";
-
 var allPokemon = new Map()
-
 getAllPokemon(url);
 
 async function getAllPokemon() {
@@ -34,7 +34,7 @@ async function searchPokemon() {
 	else {
 		pokemonResult.innerHTML = `No results found`;
 	}
-	document.getElementById("form").reset();
+	//document.getElementById("form").reset();
 }
 
 async function getId(url) {
