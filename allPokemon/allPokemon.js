@@ -8,11 +8,11 @@ async function getapi(url) {
 
 async function show(data) {
 	console.log(data);
-	let content;
+	let content = ``;
 	for(var i=0;i<20;i=i+4) {
 		content += `<div class="row">`;
 		content += await getContent(i,data.results);
-		content += `</div>`
+		content += `</div>`;
 	}
 	document.getElementById("content").innerHTML = content;
 }
