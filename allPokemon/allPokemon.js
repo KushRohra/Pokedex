@@ -7,34 +7,36 @@ async function getapi(url) {
 }
 
 async function show(data) {
-	let tab=`<thead class="thead-dark">
-				<th scope="col">Pokemon ID</th>
-				<th scope="col">Name</th>
-				<th scope="col">Image</th>
-				<th scope="col">Height</th>
-				<th scope="col">Base Experience</th>
-				<th scope="col">See in Detail<th>
-			</thead>`;
-	for(let r of data.results) {
-		let dataForOne = await getDataforCurrentSet(r.url);
-		tab += dataForOne;
+	console.log(data)
+	let content = `<div class="row">`;
+	for(var i=0;i<data.results.length;i++) {
+		let dataForOne = await getDataforCurrentSet(data.results[i].url);
+		//console.log(dataForOne);
+		if(i!=0 & i%4==0) {
+			content += `</div><div class="row">`;
+		}
+		content += `
+			<div class="col s3">
+				<div class="card addMargin">
+					<img src="${dataForOne.sprites.front_default}" alt="${dataForOne.name}">
+					<div class="middleAlign">
+						<h4><b>${dataForOne.id}. ${dataForOne.name[0].toUpperCase()+dataForOne.name.slice(1)}</b></h4>
+						<a href="../seePokemon/seePokemon.html?id=${dataForOne.id}" class="btn">See in Detail</a>
+					</div>
+				</div>
+			</div>
+		`;
 	}
-	document.getElementById("table").innerHTML = tab;
+	console.log(content);
+	document.getElementById("content").innerHTML = content;
 }
 
 async function getDataforCurrentSet(url) {
 	const response = await fetch(url);
 	var data = await response.json();
-	//console.log(data);
-	return `<tr>
-				<th scope="row">${data.id}</th>
-				<td>${data.name[0].toUpperCase()+data.name.slice(1)}</td>
-				<td><img src="${data.sprites.front_default}" alt="${data.name}" class="img-thumbnail"></td>
-				<td>${data.height}</td>
-				<td>${data.base_experience}</td>
-				<td><a href="../seePokemon/seePokemon.html?id=${data.id}" class="btn">See in Detail</a></td>
-			</tr>`
-} 
+	return data;
+}
+
 
 function nextPage() {
 	if(data.next!=null)
