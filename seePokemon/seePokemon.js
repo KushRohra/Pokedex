@@ -40,7 +40,13 @@ async function getAbilities(data) {
 	for(var i=0;i<data.abilities.length;i++) {
 		ability = data.abilities[i].ability.name;
 		ability = ability[0].toUpperCase() + ability.slice(1);
-		abilties += `<a class="btn"><li class="list-group-item list-group-item-action">${ability}</li></a>`;
+		abilties += `
+			<div class="row">
+				<div class="col s6">
+					<a class="btn"><li class="list-group-item list-group-item-action">${ability}</li></a>
+				</div>
+			</div>
+		`;
 	}
 	abilties += `</div>`
 	return abilties;
@@ -48,13 +54,13 @@ async function getAbilities(data) {
 
 async function getMoves(data) {
 	let moves="";
-	moves += `<h4 class="display-4">Moves</h3>`
-	moves += `<div id="moves" class="list-group">`
-	for(var i=0;i<data.moves.length;i=i+3) {
+	moves += `<h4 class="display-4">Moves</h3>`;
+	moves += `<div id="moves" class="list-group">`;
+	for(var i=0;i<data.moves.length;i=i+4) {
 		move = data.moves[i].move.name;
 		move = move[0].toUpperCase() + move.slice(1);
 		moves += `	<div class="row">
-						<div class="col">
+						<div class="col s3">
 							<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i].move.url)}">
 								<li class="list-group-item list-group-item-action">${move}</li>
 							</a>
@@ -63,8 +69,8 @@ async function getMoves(data) {
 		if(i+1<data.moves.length) {
 			move = data.moves[i+1].move.name;
 			move = move[0].toUpperCase() + move.slice(1);
-			moves += `	
-							<div class="col">
+			moves += `
+							<div class="col s3">
 								<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+1].move.url)}">
 									<li class="list-group-item list-group-item-action">${move}</li>
 								</a>
@@ -72,19 +78,30 @@ async function getMoves(data) {
 					`;
 		}
 		if(i+2<data.moves.length) {
-			move = data.moves[i+1].move.name;
+			move = data.moves[i+2].move.name;
 			move = move[0].toUpperCase() + move.slice(1);
-			moves += `	
-							<div class="col">
+			moves += `
+							<div class="col s3">
 								<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+2].move.url)}">
 									<li class="list-group-item list-group-item-action">${move}</li>
 								</a>
 							</div>
 					`;
-			moves += `</div>`
+		}
+		if(i+3<data.moves.length) {
+			move = data.moves[i+3].move.name;
+			move = move[0].toUpperCase() + move.slice(1);
+			moves += `
+							<div class="col s3">
+								<a class="btn button" href="../moves/aboutMove.html?id=${await getId(data.moves[i+3].move.url)}">
+									<li class="list-group-item list-group-item-action">${move}</li>
+								</a>
+							</div>
+					`;
+			moves += `</div>`;
 		}
 	}
-	moves += `</div>`
+	moves += `</div>`;
 	return moves;
 }
 
