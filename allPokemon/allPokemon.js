@@ -1,13 +1,20 @@
-const url = "https://pokeapi.co/api/v2/pokemon/";
 var data;
-async function getapi(url) {
-	const response = await fetch(url);
+
+async function getapi() {
+	var url = "https://pokeapi.co/api/v2/pokemon/";
+	var response = await fetch(url);
 	data = await response.json();
+	var page = parseInt(sessionStorage.getItem("page"));
+	while(page>0) {
+		url = data.next;
+		response = await fetch(url);
+		data = await response.json();
+		page -= 1;
+	}
 	show(data);
 }
 
 async function show(data) {
-	console.log(data);
 	let content = ``;
 	for(var i=0;i<20;i=i+4) {
 		content += `<div class="row">`;
@@ -20,7 +27,6 @@ async function show(data) {
 async function getContent(index, urls) {
 	let innerContent = ``;
 	for(var i=0;i<4;i++) {
-		console.log(urls[i+index]);
 		let dataForOne = await getDataforCurrentPokemon(urls[i+index].url);
 		innerContent += `
 			<div class="col">
@@ -45,13 +51,19 @@ async function getDataforCurrentPokemon(url) {
 
 
 function nextPage() {
-	if(data.next!=null)
+	if(data.next!=null) {
+		var pageCount = parseInt(sessionStorage.getItem("page")) + 1;
+		sessionStorage.setItem("page", pageCount);
 		getapi(data.next);
+	}
 }
 
 function prevPage() {
-	if(data.previous!=null)
-		getapi(data.previous)
+	if(data.previous!=null) {
+		var pageCount = parseInt(sessionStorage.getItem("page")) - 1;
+		sessionStorage.setItem("page", pageCount);
+		getapi(data.previous);
+	}
 }
 
-getapi(url);
+getapi();
