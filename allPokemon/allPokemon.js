@@ -29,8 +29,8 @@ async function getContent(index, urls) {
 	for(var i=0;i<4;i++) {
 		let dataForOne = await getDataforCurrentPokemon(urls[i+index].url);
 		innerContent += `
-			<div class="col">
-				<div class="card text-center">
+			<div class="col s12 m6 l3">
+				<div class="card middleAlign">
 					<img class="card-img-top" src="${dataForOne.sprites.front_default}" alt="${dataForOne.name}" />
 					<div class="card-body">
 						<h5 class="card-title">${dataForOne.id}. ${dataForOne.name[0].toUpperCase()+dataForOne.name.slice(1)}</h5>
@@ -54,6 +54,7 @@ function nextPage() {
 	if(data.next!=null) {
 		var pageCount = parseInt(sessionStorage.getItem("page")) + 1;
 		sessionStorage.setItem("page", pageCount);
+		document.getElementById("content").innerHTML = ``;
 		getapi(data.next);
 	}
 }
@@ -62,6 +63,7 @@ function prevPage() {
 	if(data.previous!=null) {
 		var pageCount = parseInt(sessionStorage.getItem("page")) - 1;
 		sessionStorage.setItem("page", pageCount);
+		document.getElementById("content").innerHTML = ``;
 		getapi(data.previous);
 	}
 }

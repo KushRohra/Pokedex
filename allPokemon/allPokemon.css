@@ -17,13 +17,16 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 10%;
-  margin: 5px 0;
+  margin: 10px 10px;
   height: auto;
   width: auto;
+  transition: all 0.4s ease-in;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 .buttons {
@@ -31,25 +34,12 @@
 }
 
 img {
-  width: 60%;
-  height: 60%;
+  width: 100%;
+  height: 100%;
 }
 
 .middleAlign {
   text-align: center;
 }
 
-.row {
-  width: 100%;
-  margin: 0 5px;
-}
 
-.col {
-  width: 20%;
-}
-
-@media (max-width: 1010px) {
-  body {
-    font-size: 0.5rem;
-  }
-}
